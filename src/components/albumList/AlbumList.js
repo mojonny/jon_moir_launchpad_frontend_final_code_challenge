@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-	deleteAlbum,
+	deleteAsyncAlbum,
 	updateAsyncAlbum,
 } from '../../features/albums/albumsSlice';
 
@@ -17,7 +17,7 @@ export default function AlbumList() {
 	const dispatch = useDispatch();
 
 	const handleDelete = (id) => {
-		dispatch(deleteAlbum({ id }));
+		dispatch(deleteAsyncAlbum({ id }));
 	};
 
 	const handleEditMode = ({ id, userId, title }) => {

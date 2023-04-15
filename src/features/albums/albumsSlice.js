@@ -68,6 +68,25 @@ export const updateAsyncAlbum =
 		}
 	};
 
+export const deleteAsyncAlbum =
+	({ id }) =>
+	async (dispatch) => {
+		try {
+			const response = await axios.delete(
+				`https://jsonplaceholder.typicode.com/albums/${id}`
+			);
+			console.log('deleteAsyncAlbums:', response.data);
+			Toast.fire({
+				icon: 'success',
+				title: `Album ${id} deleted successfully!`,
+			});
+			dispatch(deleteAlbum({ id }));
+		} catch (err) {
+			console.log('err', err);
+			throw new Error(err);
+		}
+	};
+
 export const albumsSlice = createSlice({
 	name: 'albums',
 	initialState: {
