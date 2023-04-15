@@ -16,6 +16,7 @@ export default function AlbumModal() {
 
 	const addNewAlbum = () => {
 		dispatch(addAsyncAlbums(newAlbum));
+		setNewAlbum({ userId: '', title: '' });
 		setIsOpen(false);
 	};
 
@@ -75,14 +76,14 @@ export default function AlbumModal() {
 							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
 								<Dialog.Title
 									as="h3"
-									className="text-lg font-medium leading-6 text-gray-900"
+									className="text-2xl font-medium leading-6 text-gray-900"
 								>
 									Add Album
 								</Dialog.Title>
-								<div className="mt-2 bg-slate-100 p-2 border-2 rounded-lg">
+								<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
 									<label>UserId: </label>
 									<input
-										className="border-2 rounded-lg m-2"
+										className="border-2 rounded-lg m-4 p-2 w-full"
 										type="text"
 										placeholder="userId"
 										id="titleInput"
@@ -94,7 +95,7 @@ export default function AlbumModal() {
 									<br />
 									<label>Title: </label>
 									<input
-										className="border-2 rounded-lg m-2"
+										className="border-2 rounded-lg m-4 p-2 w-full"
 										type="text"
 										placeholder="title"
 										id="titleInput"

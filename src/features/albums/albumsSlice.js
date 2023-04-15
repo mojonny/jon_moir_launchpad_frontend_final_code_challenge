@@ -47,6 +47,27 @@ export const addAsyncAlbums = (data) => async (dispatch) => {
 	}
 };
 
+export const updateAsyncAlbum =
+	({ id, userId, title }) =>
+	async (dispatch) => {
+		try {
+			const response = await axios.put(
+				`https://jsonplaceholder.typicode.com/albums/${id}`,
+				{ id: id, userId: userId, title: title }
+			);
+			console.log('updateAsyncAlbums:', response.data);
+			Toast.fire({
+				icon: 'success',
+				title: `Album updated successfully!
+			Id:${response.data.id}`,
+			});
+			dispatch(updateAlbum(response.data));
+		} catch (err) {
+			console.log('err', err);
+			throw new Error(err);
+		}
+	};
+
 export const albumsSlice = createSlice({
 	name: 'albums',
 	initialState: {
