@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import store from './store/store';
 import { Provider } from 'react-redux';
+import { getAsyncAlbums } from './features/albums/albumsSlice';
 
 import App from './App';
 import './index.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+
+store.dispatch(getAsyncAlbums());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

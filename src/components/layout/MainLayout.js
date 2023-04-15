@@ -4,8 +4,10 @@ export default function MainLayout() {
 	return (
 		<>
 			<nav className="p-1 bg-slate-400">
-				<div className="text-3xl">JM</div>
-				<ul className="flex flex-row justify-end gap-2 p-4">
+				<ul className="flex flex-row justify-center items-center gap-2 p-4">
+					<li>
+						<div className="text-3xl">JM</div>
+					</li>
 					<li>
 						<Link to="/">Albums</Link>
 					</li>
