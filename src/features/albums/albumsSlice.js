@@ -50,21 +50,28 @@ export const addAsyncAlbums = (data) => async (dispatch) => {
 export const updateAsyncAlbum =
 	({ id, userId, title }) =>
 	async (dispatch) => {
-		try {
-			const response = await axios.put(
-				`https://jsonplaceholder.typicode.com/albums/${id}`,
-				{ id: id, userId: userId, title: title }
-			);
-			console.log('updateAsyncAlbums:', response.data);
+		if (id <= 100) {
+			try {
+				const response = await axios.put(
+					`https://jsonplaceholder.typicode.com/albums/${id}`,
+					{ id: id, userId: userId, title: title }
+				);
+				console.log('updateAsyncAlbums:', response.data);
+				Toast.fire({
+					icon: 'success',
+					title: `Album ${id} updated successfully!`,
+				});
+				dispatch(updateAlbum(response.data));
+			} catch (err) {
+				console.log('err', err);
+				throw new Error(err);
+			}
+		} else {
+			dispatch(updateAlbum({ id: id, userId: userId, title: title }));
 			Toast.fire({
 				icon: 'success',
-				title: `Album updated successfully!
-			Id:${response.data.id}`,
+				title: `Album ${id} updated successfully!`,
 			});
-			dispatch(updateAlbum(response.data));
-		} catch (err) {
-			console.log('err', err);
-			throw new Error(err);
 		}
 	};
 

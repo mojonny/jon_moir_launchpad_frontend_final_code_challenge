@@ -115,13 +115,14 @@ export default function AlbumList() {
 								</Dialog.Title>
 								<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
 									<label>Id: </label>
-									<input
+									<div
 										className="border-2 rounded-lg m-4 p-2 w-full"
 										type="text"
 										placeholder=" Enter Id"
-										onChange={(e) => setId(e.target.value)}
 										value={id}
-									/>
+									>
+										{id}
+									</div>
 									<label>UserId: </label>
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full"
@@ -147,7 +148,7 @@ export default function AlbumList() {
 										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
 										onClick={() => handleSubmit({ id, userId, title })}
 									>
-										Edit Album
+										Save
 									</button>
 
 									<button

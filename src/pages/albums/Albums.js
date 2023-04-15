@@ -6,7 +6,6 @@ export default function Albums() {
 	return (
 		<div>
 			<AlbumModal />
-
 			<AlbumList />
 		</div>
 	);
