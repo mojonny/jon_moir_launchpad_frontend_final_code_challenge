@@ -1,22 +1,21 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-
 import { useDispatch } from 'react-redux';
-import { addAsyncAlbums } from '../../features/albums/albumsSlice';
+import { updateAsyncAlbum } from '../../features/albums/albumsSlice';
 
-export default function AlbumModal() {
+export default function EditAlbumModal() {
 	let [isOpen, setIsOpen] = useState(false);
-
-	let [newAlbum, setNewAlbum] = useState({
-		userId: '',
-		title: '',
-	});
+	const [id, setId] = useState('');
+	const [userId, setUserId] = useState('');
+	const [title, setTitle] = useState('');
 
 	const dispatch = useDispatch();
 
-	const addNewAlbum = () => {
-		dispatch(addAsyncAlbums(newAlbum));
-		setNewAlbum({ userId: '', title: '' });
+	const handleSubmit = () => {
+		dispatch(updateAsyncAlbum({ id, userId, title }));
+		setId('');
+		setUserId('');
+		setTitle('');
 		setIsOpen(false);
 	};
 
@@ -35,7 +34,7 @@ export default function AlbumModal() {
 				onClick={openModal}
 				className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
 			>
-				Add Album
+				Edit Album
 			</button>
 
 			<Transition appear show={isOpen} as={Fragment}>
@@ -78,31 +77,32 @@ export default function AlbumModal() {
 									as="h3"
 									className="text-2xl font-medium leading-6 text-gray-900"
 								>
-									Add Album
+									Edit Album
 								</Dialog.Title>
 								<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
+									<label>Id: </label>
+									<input
+										className="border-2 rounded-lg m-4 p-2 w-full"
+										type="text"
+										placeholder=" Enter Id"
+										onChange={(e) => setId(e.target.value)}
+										value={id}
+									/>
 									<label>UserId: </label>
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full"
 										type="text"
-										placeholder="userId"
-										id="titleInput"
-										onChange={(e) =>
-											setNewAlbum({ ...newAlbum, userId: e.target.value })
-										}
-										value={newAlbum.userId}
+										placeholder=" Enter UserId"
+										onChange={(e) => setUserId(e.target.value)}
+										value={userId}
 									/>
-									<br />
 									<label>Title: </label>
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full"
 										type="text"
-										placeholder="title"
-										id="titleInput"
-										onChange={(e) =>
-											setNewAlbum({ ...newAlbum, title: e.target.value })
-										}
-										value={newAlbum.title}
+										placeholder=" Enter Title"
+										onChange={(e) => setTitle(e.target.value)}
+										value={title}
 									/>
 								</div>
 								<br />
@@ -111,9 +111,9 @@ export default function AlbumModal() {
 									<button
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
-										onClick={addNewAlbum}
+										onClick={() => handleSubmit({ id, userId, title })}
 									>
-										Add Album
+										Edit Album
 									</button>
 
 									<button
