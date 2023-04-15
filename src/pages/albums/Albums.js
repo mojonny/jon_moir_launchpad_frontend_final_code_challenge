@@ -1,11 +1,11 @@
 import React from 'react';
 import AlbumList from '../../components/albumList/AlbumList';
-import AddAlbum from '../../features/albums/addAlbum';
+import AlbumModal from '../../components/modal/AlbumModal';
 
 export default function Albums() {
 	return (
 		<div>
-			<AddAlbum />
+			<AlbumModal />
 			<AlbumList />
 		</div>
 	);
