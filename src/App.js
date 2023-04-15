@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Albums } from './pages/albums';
-import { Photos } from './pages/photos';
-import { MainLayout } from './components/layout';
+import Albums from './pages/albums/Albums';
+import Photos from './pages/photos/Photos';
+import MainLayout from './components/layout/MainLayout';
 
-export function App() {
+export default function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<MainLayout />}>

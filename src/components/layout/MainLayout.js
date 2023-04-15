@@ -1,10 +1,11 @@
 import { Link, Outlet } from 'react-router-dom';
 
-export function MainLayout() {
+export default function MainLayout() {
 	return (
 		<>
 			<nav>
 				<ul>
+					<li>JM</li>
 					<li>
 						<Link to="/">Albums</Link>
 					</li>
