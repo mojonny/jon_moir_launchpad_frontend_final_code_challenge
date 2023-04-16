@@ -13,7 +13,7 @@ export default function SearchPhotosFilter() {
 		if (!filterTerm) {
 			return photos;
 		}
-		return photos.filter((item) => item.id === filterTerm);
+		return photos.filter((item) => item.albumId === filterTerm);
 	}
 
 	const filteredPhotos = filterPhotos(filterTerm);
@@ -29,7 +29,6 @@ export default function SearchPhotosFilter() {
 			<label>Search by id: </label>
 
 			<input
-				type="text"
 				className="border-2 border-black rounded-lg"
 				onChange={updateFilterHandler}
 			/>

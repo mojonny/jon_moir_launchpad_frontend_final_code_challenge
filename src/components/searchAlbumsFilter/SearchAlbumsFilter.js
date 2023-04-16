@@ -19,7 +19,7 @@ export default function SearchAlbumsFilter() {
 		if (!filterTerm) {
 			return albums;
 		}
-		return albums.filter((album) => album.id.includes(filterTerm));
+		return albums.filter((album) => album.includes(filterTerm));
 	}
 
 	const filteredAlbums = filterAlbums(filterTerm);
