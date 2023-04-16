@@ -1,18 +1,18 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
 	deleteAsyncAlbum,
 	updateAsyncAlbum,
 } from '../../features/albums/albumsSlice';
 
-export default function AlbumList() {
+export default function AlbumList({ albums }) {
 	const [id, setId] = useState('');
 	const [userId, setUserId] = useState('');
 	const [title, setTitle] = useState('');
 	let [isOpen, setIsOpen] = useState(false);
 
-	const { data } = useSelector((state) => state.albums);
+	//const { data } = useSelector((state) => state.albums);
 
 	const dispatch = useDispatch();
 
@@ -43,14 +43,14 @@ export default function AlbumList() {
 		<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
 			<table>
 				<tbody>
-					{data
-						.slice(0)
-						.reverse()
-						.map(({ id, userId, title }, i) => (
+					{albums
+						// .slice(0)
+						// .reverse()
+						.map((album, i) => (
 							<tr key={i}>
-								<td className="p-2"> Id: {id} </td>
-								<td> UserId: {userId} </td>
-								<td> Title: {title} </td>
+								<td className="p-2"> Id: {album.id} </td>
+								<td> UserId: {album.userId} </td>
+								<td> Title: {album.title} </td>
 								<td className="flex flex-row gap-4 p-4">
 									<button
 										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
