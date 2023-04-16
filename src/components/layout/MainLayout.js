@@ -1,12 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
 import spaceType from '../../assets/spaceType.gif';
+import fun from '../../assets/fun.png';
 
 export default function MainLayout() {
 	return (
 		<>
 			<nav className="p-1 bg-darkPurple">
-				<div className="text-5xl text-purple p-4 ">THE SEARCH</div>
-				<ul className="flex flex-row gap-2 p-10">
+				<div className="text-5xl text-purple p-4">THE SEARCH</div>
+				<img className="h-40 object-fill rounded-xl m-2" src={fun} alt="fun" />
+				<ul className="flex flex-row gap-2 p-10 bg-midnight">
 					<li>
 						<Link
 							to="/"
