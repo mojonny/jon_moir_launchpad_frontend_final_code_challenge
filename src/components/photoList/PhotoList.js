@@ -34,7 +34,7 @@ export default function PhotoList() {
 
 	return (
 		<div className="mt-2 bg-slate-100 p-8 border-2">
-			<div className="flex flex-row align-middle gap-2">
+			<div className="flex flex-row align-middle gap-3">
 				<label className="text-3xl font-bold">Search by AlbumId: </label>
 				<input
 					type="text"
@@ -44,12 +44,15 @@ export default function PhotoList() {
 					className="h-12 p-2 border-4 border-black"
 				/>
 
-				<button onClick={handleSearch}>
+				<button
+					className="w-20 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+					onClick={handleSearch}
+				>
 					<img src={searchButton} alt="looking glass" />
 				</button>
 
 				<button
-					className=" px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+					className="w-20 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
 					onClick={handleReset}
 				>
 					Reset
