@@ -1,18 +1,28 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	deleteAsyncAlbum,
 	updateAsyncAlbum,
+	showAlbums,
 } from '../../features/albums/albumsSlice';
+import {
+	searchAsyncAlbum,
+	showAlbumSearch,
+} from '../../features/albums/searchAlbumSlice';
+import searchButton from '../../assets/LookingGlass.png';
 
-export default function AlbumList({ albums }) {
+export default function AlbumList() {
 	const [id, setId] = useState('');
 	const [userId, setUserId] = useState('');
 	const [title, setTitle] = useState('');
 	let [isOpen, setIsOpen] = useState(false);
+	const [showSearch, setShowSearch] = useState(false);
+	const [showAll, setShowAll] = useState(true);
 
 	const dispatch = useDispatch();
+	const albums = useSelector(showAlbums);
+	const searchAlbum = useSelector(showAlbumSearch);
 
 	const handleDelete = (id) => {
 		dispatch(deleteAsyncAlbum({ id }));
@@ -33,40 +43,103 @@ export default function AlbumList({ albums }) {
 		setIsOpen(false);
 	};
 
+	const handleSearch = () => {
+		dispatch(searchAsyncAlbum({ id }));
+		setShowSearch(true);
+		setShowAll(false);
+		setId('');
+	};
+
 	function closeModal() {
 		setIsOpen(false);
 	}
 
 	return (
 		<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
-			<table>
-				<tbody>
-					{albums.map((album, i) => (
-						<tr key={i}>
-							<td className="p-2"> Id: {album.id} </td>
-							<td> UserId: {album.userId} </td>
-							<td> Title: {album.title} </td>
-							<td className="flex flex-row gap-4 p-4">
-								<button
-									className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-									onClick={() =>
-										handleEditMode(album.id, album.userId, album.title)
-									}
-								>
-									Edit
-								</button>
+			<div className="flex flex-row align-middle gap-4">
+				<label className="text-3xl font-bold">Search by id: </label>
+				<input
+					type="text"
+					placeholder=" id "
+					value={id}
+					onChange={(e) => setId(e.target.value)}
+					className="h-12 p-2 border-4 border-black"
+				/>
 
-								<button
-									className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-									onClick={() => handleDelete(album.id)}
-								>
-									Delete
-								</button>
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+				<button onClick={handleSearch}>
+					<img src={searchButton} alt="looking glass" />
+				</button>
+			</div>
+
+			{showSearch && (
+				<table>
+					<tbody>
+						{
+							<tr key={searchAlbum.id}>
+								<td className="p-2"> Id: {searchAlbum.id} </td>
+								<td> UserId: {searchAlbum.userId} </td>
+								<td> Title: {searchAlbum.title} </td>
+								<td className="flex flex-row gap-4 p-4">
+									<button
+										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										onClick={() =>
+											handleEditMode(
+												searchAlbum.id,
+												searchAlbum.userId,
+												searchAlbum.title
+											)
+										}
+									>
+										Edit
+									</button>
+
+									<button
+										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										onClick={() =>
+											handleDelete(searchAlbum.id) ||
+											setShowSearch(false) ||
+											setShowAll(true)
+										}
+									>
+										Delete
+									</button>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			)}
+
+			{showAll && (
+				<table>
+					<tbody>
+						{albums.map((album, i) => (
+							<tr key={i}>
+								<td className="p-2"> Id: {album.id} </td>
+								<td> UserId: {album.userId} </td>
+								<td> Title: {album.title} </td>
+								<td className="flex flex-row gap-4 p-4">
+									<button
+										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										onClick={() =>
+											handleEditMode(album.id, album.userId, album.title)
+										}
+									>
+										Edit
+									</button>
+
+									<button
+										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										onClick={() => handleDelete(album.id)}
+									>
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
@@ -143,7 +216,11 @@ export default function AlbumList({ albums }) {
 									<button
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
-										onClick={() => handleSubmit({ id, userId, title })}
+										onClick={() =>
+											handleSubmit({ id, userId, title }) ||
+											setShowSearch(false) ||
+											setShowAll(true)
+										}
 									>
 										Save
 									</button>
@@ -151,7 +228,9 @@ export default function AlbumList({ albums }) {
 									<button
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
-										onClick={closeModal}
+										onClick={
+											closeModal || setShowSearch(false) || setShowAll(true)
+										}
 									>
 										Close
 									</button>

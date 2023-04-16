@@ -134,6 +134,7 @@ export const albumsSlice = createSlice({
 	},
 });
 
-export const { addAlbum, updateAlbum, deleteAlbum } = albumsSlice.actions;
+export const { addAlbum, updateAlbum, deleteAlbum, searchAlbum } =
+	albumsSlice.actions;
 export const showAlbums = (state) => state.albums.data;
 export default albumsSlice.reducer;
