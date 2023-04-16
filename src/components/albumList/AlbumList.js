@@ -41,33 +41,30 @@ export default function AlbumList({ albums }) {
 		<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
 			<table>
 				<tbody>
-					{albums
-						// .slice(0)
-						// .reverse()
-						.map((album, i) => (
-							<tr key={i}>
-								<td className="p-2"> Id: {album.id} </td>
-								<td> UserId: {album.userId} </td>
-								<td> Title: {album.title} </td>
-								<td className="flex flex-row gap-4 p-4">
-									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-										onClick={() =>
-											handleEditMode(album.id, album.userId, album.title)
-										}
-									>
-										Edit
-									</button>
+					{albums.map((album, i) => (
+						<tr key={i}>
+							<td className="p-2"> Id: {album.id} </td>
+							<td> UserId: {album.userId} </td>
+							<td> Title: {album.title} </td>
+							<td className="flex flex-row gap-4 p-4">
+								<button
+									className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+									onClick={() =>
+										handleEditMode(album.id, album.userId, album.title)
+									}
+								>
+									Edit
+								</button>
 
-									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-										onClick={() => handleDelete(album.id)}
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						))}
+								<button
+									className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+									onClick={() => handleDelete(album.id)}
+								>
+									Delete
+								</button>
+							</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 

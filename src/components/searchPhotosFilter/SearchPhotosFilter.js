@@ -13,9 +13,7 @@ export default function SearchPhotosFilter() {
 		if (!filterTerm) {
 			return photos;
 		}
-		return photos.filter((item) => {
-			return Object.values(item).join('').includes(filterTerm);
-		});
+		return photos.filter((item) => item.id === filterTerm);
 	}
 
 	const filteredPhotos = filterPhotos(filterTerm);
