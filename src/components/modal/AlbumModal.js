@@ -29,13 +29,13 @@ export default function AlbumModal() {
 	}
 
 	return (
-		<div className="mx-8">
+		<div>
 			<button
 				type="button"
 				onClick={openModal}
-				className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+				className="inline-flex justify-center px-4 py-3 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 			>
-				Add Album
+				ADD
 			</button>
 
 			<Transition appear show={isOpen} as={Fragment}>
@@ -73,19 +73,19 @@ export default function AlbumModal() {
 							leaveFrom="opacity-100 scale-100"
 							leaveTo="opacity-0 scale-95"
 						>
-							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-midnight shadow-xl shadow-purple rounded-lg">
 								<Dialog.Title
 									as="h3"
-									className="text-2xl font-medium leading-6 text-gray-900"
+									className="text-2xl font-medium leading-6 text-white"
 								>
-									Add Album
+									ADD ALBUM
 								</Dialog.Title>
-								<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
+								<div className="mt-2 p-8 bg-darkPurple border-2 rounded-lg border-lightPurple text-white">
 									<label>UserId: </label>
 									<input
-										className="border-2 rounded-lg m-4 p-2 w-full"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
-										placeholder="userId"
+										placeholder=" userId"
 										id="titleInput"
 										onChange={(e) =>
 											setNewAlbum({ ...newAlbum, userId: e.target.value })
@@ -95,9 +95,9 @@ export default function AlbumModal() {
 									<br />
 									<label>Title: </label>
 									<input
-										className="border-2 rounded-lg m-4 p-2 w-full"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
-										placeholder="title"
+										placeholder=" title"
 										id="titleInput"
 										onChange={(e) =>
 											setNewAlbum({ ...newAlbum, title: e.target.value })
@@ -110,7 +110,7 @@ export default function AlbumModal() {
 								<div className="flex flex-row gap-4 mt-2">
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 										onClick={addNewAlbum}
 									>
 										Add Album
@@ -118,7 +118,7 @@ export default function AlbumModal() {
 
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 										onClick={closeModal}
 									>
 										Close

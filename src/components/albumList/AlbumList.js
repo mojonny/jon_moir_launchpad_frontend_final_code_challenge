@@ -11,6 +11,7 @@ import {
 	showAlbumSearch,
 } from '../../features/albums/searchAlbumSlice';
 import searchButton from '../../assets/LookingGlass.png';
+import AlbumModal from '../../components/modal/AlbumModal';
 
 export default function AlbumList() {
 	const [id, setId] = useState('');
@@ -55,90 +56,114 @@ export default function AlbumList() {
 	}
 
 	return (
-		<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
-			<div className="flex flex-row align-middle gap-4">
-				<label className="text-3xl font-bold">Search by id: </label>
+		<div className=" p-8">
+			<div className="flex flex-row mx-auto gap-4 bg-darkPurple rounded-xl shadow-md shadow-purple p-2">
+				<label className="text-xl text-white font-bold p-2">Search:</label>
 				<input
 					type="text"
 					placeholder=" id "
 					value={id}
 					onChange={(e) => setId(e.target.value)}
-					className="h-12 p-2 border-4 border-black"
+					className="border-2 rounded-lg p-2 border-purple bg-transparent text-white"
 				/>
 
-				<button onClick={handleSearch} disabled={!id}>
+				<button
+					className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+					onClick={handleSearch}
+					disabled={!id}
+				>
 					<img src={searchButton} alt="looking glass" />
 				</button>
+				<AlbumModal />
 			</div>
 
 			{showSearch && (
-				<table>
-					<tbody>
-						{
-							<tr key={searchAlbum.id}>
-								<td className="p-2"> Id: {searchAlbum.id} </td>
-								<td> UserId: {searchAlbum.userId} </td>
-								<td> Title: {searchAlbum.title} </td>
-								<td className="flex flex-row gap-4 p-4">
-									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-										onClick={() =>
-											handleEditMode(
-												searchAlbum.id,
-												searchAlbum.userId,
-												searchAlbum.title
-											)
-										}
-									>
-										Edit
-									</button>
+				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-purple shadow-2xl">
+					{
+						<div
+							className=" bg-darkPurple rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-2xl"
+							key={searchAlbum.id}
+						>
+							<div className="flex flex-row gap-4 p-4 justify-end">
+								<button
+									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									onClick={() =>
+										handleEditMode(
+											searchAlbum.id,
+											searchAlbum.userId,
+											searchAlbum.title
+										)
+									}
+								>
+									EDIT
+								</button>
 
-									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
-										onClick={() =>
-											handleDelete(searchAlbum.id) ||
-											setShowSearch(false) ||
-											setShowAll(true)
-										}
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						}
-					</tbody>
-				</table>
+								<button
+									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									onClick={() =>
+										handleDelete(searchAlbum.id) ||
+										setShowSearch(false) ||
+										setShowAll(true)
+									}
+								>
+									DEL
+								</button>
+							</div>
+
+							<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
+								<div className="text-8xl">{searchAlbum.id} </div>
+								<div className="text-white text-xs">ID</div>
+								<div className="text-4xl">{searchAlbum.userId} </div>
+								<div className="text-white text-xs">userID</div>
+							</div>
+							<div></div>
+							<div className="border-t-lightPurple border-t-2 p-1">
+								{' '}
+								Title:{searchAlbum.title}
+							</div>
+						</div>
+					}
+				</div>
 			)}
 
 			{showAll && (
-				<table>
-					<tbody>
-						{albums.map((album, i) => (
-							<tr key={i}>
-								<td className="p-2"> Id: {album.id} </td>
-								{/* <td> UserId: {album.userId} </td> */}
-								<td> Title: {album.title} </td>
-								<td className="flex flex-row gap-4 p-4">
+				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
+					{albums.map((album, i) => (
+						<div
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+							key={i}
+						>
+							<div>
+								<div className="flex flex-row gap-4 p-4 justify-end">
 									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
 										onClick={() =>
 											handleEditMode(album.id, album.userId, album.title)
 										}
 									>
-										Edit
+										EDIT
 									</button>
 
 									<button
-										className="mx-auto my-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-opacity-50 duration-300 shadow-xl"
+										className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
 										onClick={() => handleDelete(album.id)}
 									>
-										Delete
+										DEL
 									</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
+								</div>
+								<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
+									<div className="text-8xl">{album.id}</div>
+									<div className="text-white text-xs">ID</div>
+									<div className="text-4xl">{album.userId}</div>
+									<div className="text-white text-xs">userID</div>
+								</div>
+								<div className="border-t-lightPurple border-t-2 p-1">
+									Title:{album.title}
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
 			)}
 
 			<Transition appear show={isOpen} as={Fragment}>
@@ -176,17 +201,17 @@ export default function AlbumList() {
 							leaveFrom="opacity-100 scale-100"
 							leaveTo="opacity-0 scale-95"
 						>
-							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-midnight shadow-xl shadow-purple rounded-lg">
 								<Dialog.Title
 									as="h3"
-									className="text-2xl font-medium leading-6 text-gray-900"
+									className="text-2xl font-medium leading-6 text-white"
 								>
-									Edit Album
+									EDIT ALBUM
 								</Dialog.Title>
-								<div className="mt-2 bg-slate-100 p-8 border-2 rounded-lg">
+								<div className="mt-2 p-8 bg-darkPurple border-2 rounded-lg border-lightPurple text-white">
 									<label>Id: </label>
 									<div
-										className="border-2 rounded-lg m-4 p-2 w-full"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
 										placeholder=" Enter Id"
 										value={id}
@@ -195,7 +220,7 @@ export default function AlbumList() {
 									</div>
 									<label>UserId: </label>
 									<input
-										className="border-2 rounded-lg m-4 p-2 w-full"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
 										placeholder=" Enter UserId"
 										onChange={(e) => setUserId(e.target.value)}
@@ -203,7 +228,7 @@ export default function AlbumList() {
 									/>
 									<label>Title: </label>
 									<input
-										className="border-2 rounded-lg m-4 p-2 w-full"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
 										placeholder=" Enter Title"
 										onChange={(e) => setTitle(e.target.value)}
@@ -215,7 +240,7 @@ export default function AlbumList() {
 								<div className="flex flex-row gap-4 mt-2">
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 										onClick={() =>
 											handleSubmit({ id, userId, title }) ||
 											setShowSearch(false) ||
@@ -227,7 +252,7 @@ export default function AlbumList() {
 
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 										onClick={
 											closeModal || setShowSearch(false) || setShowAll(true)
 										}
