@@ -17,7 +17,7 @@ const Toast = Swal.mixin({
 export const searchAsyncAlbum =
 	({ id }) =>
 	async (dispatch) => {
-		if (id <= 20) {
+		if (id <= 100 && id > 0) {
 			try {
 				const response = await axios.get(
 					`https://jsonplaceholder.typicode.com/albums/${id}`

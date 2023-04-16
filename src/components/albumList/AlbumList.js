@@ -66,7 +66,7 @@ export default function AlbumList() {
 					className="h-12 p-2 border-4 border-black"
 				/>
 
-				<button onClick={handleSearch}>
+				<button onClick={handleSearch} disabled={!id}>
 					<img src={searchButton} alt="looking glass" />
 				</button>
 			</div>
@@ -116,7 +116,7 @@ export default function AlbumList() {
 						{albums.map((album, i) => (
 							<tr key={i}>
 								<td className="p-2"> Id: {album.id} </td>
-								<td> UserId: {album.userId} </td>
+								{/* <td> UserId: {album.userId} </td> */}
 								<td> Title: {album.title} </td>
 								<td className="flex flex-row gap-4 p-4">
 									<button
