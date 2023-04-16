@@ -35,10 +35,10 @@ export default function PhotoList() {
 	return (
 		<div className="mt-2 bg-slate-100 p-8 border-2">
 			<div className="flex flex-row align-middle gap-3">
-				<label className="text-3xl font-bold">Search by AlbumId: </label>
+				<label className="text-3xl font-bold">Search by Album Id: </label>
 				<input
 					type="text"
-					placeholder=" id "
+					placeholder="Album Id "
 					value={albumId}
 					onChange={(e) => setAlbumId(e.target.value)}
 					className="h-12 p-2 border-4 border-black"
