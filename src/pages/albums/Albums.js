@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchFilter from '../../components/searchFilter/SearchFilter';
+import SearchAlbumsFilter from '../../components/searchAlbumsFilter/SearchAlbumsFilter';
 import AlbumModal from '../../components/modal/AlbumModal';
 
 export default function Albums() {
 	return (
 		<div>
 			<AlbumModal />
-			<SearchFilter />
+			<SearchAlbumsFilter />
 		</div>
 	);
 }

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { showAlbums } from '../../features/albums/albumsSlice';
 import AlbumList from '../albumList/AlbumList';
 
-export default function SearchFilter() {
+export default function SearchAlbumsFilter() {
 	const [filterTerm, setFilterTerm] = useState('');
 
 	const albums = useSelector(showAlbums);
@@ -34,7 +34,7 @@ export default function SearchFilter() {
 			<input
 				type="text"
 				className="border-2 border-black rounded-lg"
-				placeholder="Pick a number between 1 and 100"
+				placeholder="Pick a number between 1 and 20"
 				onChange={updateFilterHandler}
 			/>
 

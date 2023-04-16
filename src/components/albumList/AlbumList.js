@@ -12,8 +12,6 @@ export default function AlbumList({ albums }) {
 	const [title, setTitle] = useState('');
 	let [isOpen, setIsOpen] = useState(false);
 
-	//const { data } = useSelector((state) => state.albums);
-
 	const dispatch = useDispatch();
 
 	const handleDelete = (id) => {
