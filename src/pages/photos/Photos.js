@@ -1,11 +1,10 @@
 import React from 'react';
-
-import SearchPhotosFilter from '../../components/searchPhotosFilter/SearchPhotosFilter';
+import PhotoList from '../../components/photoList/PhotoList';
 
 export default function Photos() {
 	return (
 		<div>
-			<SearchPhotosFilter />
+			<PhotoList />
 		</div>
 	);
 }
