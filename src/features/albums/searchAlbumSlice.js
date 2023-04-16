@@ -17,23 +17,26 @@ const Toast = Swal.mixin({
 export const searchAsyncAlbum =
 	({ id }) =>
 	async (dispatch) => {
-		try {
-			const response = await axios.get(
-				`https://jsonplaceholder.typicode.com/albums/${id}`
-			);
-			console.log('searchAsyncAlbums:', response.data);
-			Toast.fire({
-				icon: 'success',
-				title: `Album ${id} found!`,
-			});
-			dispatch(searchAlbum(response.data));
-		} catch (err) {
+		if (id <= 20) {
+			try {
+				const response = await axios.get(
+					`https://jsonplaceholder.typicode.com/albums/${id}`
+				);
+				console.log('searchAsyncAlbums:', response.data);
+				Toast.fire({
+					icon: 'success',
+					title: `Album ${id} found!`,
+				});
+				dispatch(searchAlbum(response.data));
+			} catch (err) {
+				console.log('err', err);
+				throw new Error(err);
+			}
+		} else {
 			Toast.fire({
 				icon: 'error',
 				title: `Sorry, we don't have that id`,
 			});
-			console.log('err', err);
-			throw new Error(err);
 		}
 	};
 
