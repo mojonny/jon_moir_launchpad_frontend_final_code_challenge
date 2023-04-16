@@ -16,7 +16,6 @@ export default function PhotoList() {
 	const dispatch = useDispatch();
 	const photos = useSelector(showPhotos);
 	const searchPhotos = useSelector(showPhotosSearch);
-	console.log('search photos:', searchPhotos);
 
 	const handleSearch = () => {
 		dispatch(searchAsyncPhotos({ albumId }));
@@ -35,7 +34,7 @@ export default function PhotoList() {
 	return (
 		<div className="p-8">
 			<div className="flex flex-row mx-auto gap-4 bg-midnight rounded-xl shadow-md shadow-purple p-2">
-				<label className="text-xl text-white font-bold p-2">Search: </label>
+				<label className="text-xl text-white font-bold p-2">Search:</label>
 				<input
 					type="text"
 					placeholder="Album Id"
@@ -60,75 +59,70 @@ export default function PhotoList() {
 				</button>
 			</div>
 
-			<>
-				{showSearch && (
-					<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
-						{searchPhotos.map((photo, i) => (
-							<div
-								key={i}
-								className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
-							>
-								<div
-									div
-									className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline"
-								>
-									<div className="text-8xl">{photo.albumId}</div>
-									<div className="text-white text-xs">albumID</div>
-									<div className="text-4xl">{photo.id}</div>
-									<div className="text-white text-xs">ID</div>
-								</div>
+			{showSearch && (
+				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
+					{searchPhotos.map((photo, i) => (
+						<div
+							key={i}
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+						>
+							<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
+								<div className="text-8xl">{photo.albumId}</div>
+								<div className="text-white text-xs">albumID</div>
+								<div className="text-4xl">{photo.id}</div>
+								<div className="text-white text-xs">ID</div>
+							</div>
 
-								<div className="flex flex-row gap-2">
-									<div className="object-cover">
-										<img src={photo.url} alt="photoUrl" />
-									</div>
-									<div className="object-cover">
-										<img src={photo.thumbnailUrl} alt="photoThumbnailUrl" />
-									</div>
+							<div className="flex flex-row gap-2">
+								<div className="object-cover">
+									<img src={photo.url} alt="photoUrl" />
 								</div>
-
-								<div className="border-t-lightPurple border-t-2 p-1 mt-2">
-									Title:{photo.title}
+								<div className="object-cover">
+									<img src={photo.thumbnailUrl} alt="photoThumbnailUrl" />
 								</div>
 							</div>
-						))}
-					</div>
-				)}
 
-				{showAll && (
-					<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
-						{photos.map((photo, i) => (
+							<div className="border-t-lightPurple border-t-2 p-1 mt-2">
+								Title:{photo.title}
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+
+			{showAll && (
+				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
+					{photos.map((photo, i) => (
+						<div
+							key={i}
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+						>
 							<div
-								key={i}
-								className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+								div
+								className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline"
 							>
-								<div
-									div
-									className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline"
-								>
-									<div className="text-8xl">{photo.albumId}</div>
-									<div className="text-white text-xs">albumID</div>
-									<div className="text-4xl">{photo.id}</div>
-									<div className="text-white text-xs">ID</div>
-								</div>
+								<div className="text-8xl">{photo.albumId}</div>
+								<div className="text-white text-xs">albumID</div>
+								<div className="text-4xl">{photo.id}</div>
+								<div className="text-white text-xs">ID</div>
+							</div>
 
-								<div className="flex flex-row gap-2">
-									<div className="object-cover">
-										<img src={photo.url} alt="photoUrl" />
-									</div>
-									<div className="object-cover">
-										<img src={photo.thumbnailUrl} alt="photoThumbnailUrl" />
-									</div>
+							<div className="flex flex-row gap-2">
+								<div className="object-cover">
+									<img src={photo.url} alt="photoUrl" />
 								</div>
-
-								<div className="border-t-lightPurple border-t-2 p-1 mt-2">
-									Title:{photo.title}
+								<div className="object-cover">
+									<img src={photo.thumbnailUrl} alt="photoThumbnailUrl" />
 								</div>
 							</div>
-						))}
-					</div>
-				)}
-			</>
+
+							<div className="border-t-lightPurple border-t-2 p-1 mt-2">
+								Title:{photo.title}
+							</div>
+						</div>
+					))}
+				</div>
+			)}
 		</div>
 	);
 }

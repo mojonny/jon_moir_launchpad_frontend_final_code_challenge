@@ -133,34 +133,32 @@ export default function AlbumList() {
 							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
 							key={i}
 						>
-							<>
-								<div className="flex flex-row gap-4 p-4 justify-end">
-									<button
-										className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
-										onClick={() =>
-											handleEditMode(album.id, album.userId, album.title)
-										}
-									>
-										EDIT
-									</button>
+							<div className="flex flex-row gap-4 p-4 justify-end">
+								<button
+									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									onClick={() =>
+										handleEditMode(album.id, album.userId, album.title)
+									}
+								>
+									EDIT
+								</button>
 
-									<button
-										className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
-										onClick={() => handleDelete(album.id)}
-									>
-										DEL
-									</button>
-								</div>
-								<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
-									<div className="text-8xl">{album.id}</div>
-									<div className="text-white text-xs">ID</div>
-									<div className="text-4xl">{album.userId}</div>
-									<div className="text-white text-xs">userID</div>
-								</div>
-								<div className="border-t-lightPurple border-t-2 p-1">
-									Title:{album.title}
-								</div>
-							</>
+								<button
+									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									onClick={() => handleDelete(album.id)}
+								>
+									DEL
+								</button>
+							</div>
+							<div className="flex flex-row -mt-14 p-4 gap-2 place-items-baseline">
+								<div className="text-8xl">{album.id}</div>
+								<div className="text-white text-xs">ID</div>
+								<div className="text-4xl">{album.userId}</div>
+								<div className="text-white text-xs">userID</div>
+							</div>
+							<div className="border-t-lightPurple border-t-2 p-1">
+								Title:{album.title}
+							</div>
 						</div>
 					))}
 				</div>
