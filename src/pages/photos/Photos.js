@@ -3,7 +3,7 @@ import PhotoList from '../../components/photoList/PhotoList';
 
 export default function Photos() {
 	return (
-		<div>
+		<div className="bg-darkPurple">
 			<PhotoList />
 		</div>
 	);

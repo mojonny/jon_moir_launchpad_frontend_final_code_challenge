@@ -56,8 +56,8 @@ export default function AlbumList() {
 	}
 
 	return (
-		<div className=" p-8">
-			<div className="flex flex-row mx-auto gap-4 bg-darkPurple rounded-xl shadow-md shadow-purple p-2">
+		<div className="p-8">
+			<div className="flex flex-row mx-auto gap-4 bg-midnight rounded-xl shadow-md shadow-purple p-2">
 				<label className="text-xl text-white font-bold p-2">Search:</label>
 				<input
 					type="text"
@@ -133,7 +133,7 @@ export default function AlbumList() {
 							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
 							key={i}
 						>
-							<div>
+							<>
 								<div className="flex flex-row gap-4 p-4 justify-end">
 									<button
 										className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
@@ -160,7 +160,7 @@ export default function AlbumList() {
 								<div className="border-t-lightPurple border-t-2 p-1">
 									Title:{album.title}
 								</div>
-							</div>
+							</>
 						</div>
 					))}
 				</div>

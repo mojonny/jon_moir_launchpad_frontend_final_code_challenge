@@ -4,8 +4,8 @@ import spaceType from '../../assets/spaceType.gif';
 export default function MainLayout() {
 	return (
 		<>
-			<nav className="p-1 bg-midnight">
-				<div className="text-5xl text-purple bg-midnight">THE SEARCH</div>
+			<nav className="p-1 bg-darkPurple">
+				<div className="text-5xl text-purple">THE SEARCH</div>
 				<ul className="flex flex-row gap-2 p-10">
 					<li>
 						<Link
