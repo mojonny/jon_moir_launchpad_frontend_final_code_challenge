@@ -14,7 +14,7 @@ export default function MainLayout() {
 				<div className="overflow-hidden">
 					<img className=" -mb-48 -mt-52 -ml-80" src={spaceType} alt="space" />
 				</div>
-				<div className="links">
+				<div className="flex flex-col gap-4">
 					<a href="https://github.com/mojonny">
 						<img className="mt-10 h-10 w-10" src={Github} alt="github" />
 					</a>
