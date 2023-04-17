@@ -64,6 +64,7 @@ export default function PhotoList() {
 				</button>
 			</div>
 
+			{/* Hide search results until a search is performed */}
 			{showSearch && (
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{searchPhotos.map((photo, i) => (
@@ -95,6 +96,7 @@ export default function PhotoList() {
 				</div>
 			)}
 
+			{/* Hide the original 20 photos when a search is performed */}
 			{showAll && (
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{photos.map((photo, i) => (

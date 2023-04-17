@@ -7,6 +7,7 @@ import Linkedin from '../../assets/linkedin.svg';
 export default function MainLayout() {
 	return (
 		<>
+			{/* This has my links and cool gif made on a space type generator */}
 			<header className="flex flex-row justify-center bg-midnight">
 				<h1 className="text-7xl  text-white px-8 pt-10 pb-2 ml-20 font-bold">
 					The Search
@@ -27,7 +28,7 @@ export default function MainLayout() {
 				</div>
 			</header>
 
-			<nav className="sticky top-0 p-1 bg-midnight border-t-2 border-t-lightPurple">
+			<nav className="sticky top-0 p-1 bg-midnight border-t-8 border-t-lightPurple">
 				<ul className="flex flex-row justify-end gap-8 p-10">
 					<li>
 						<Link

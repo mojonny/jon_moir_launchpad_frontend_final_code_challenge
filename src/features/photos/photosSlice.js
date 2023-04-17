@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
 import axios from 'axios';
+
+//These are my async api calls using axios
 
 export const getAsyncPhotos = createAsyncThunk('getAsyncPhotos', async () => {
 	try {

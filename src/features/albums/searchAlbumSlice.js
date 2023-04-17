@@ -17,6 +17,7 @@ const Toast = Swal.mixin({
 export const searchAsyncAlbum =
 	({ id }) =>
 	async (dispatch) => {
+		// Search the jsonplaceholder api which only has ids from 1 to 100
 		if (id <= 100 && id > 0) {
 			try {
 				const response = await axios.get(

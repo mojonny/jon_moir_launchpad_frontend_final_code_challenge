@@ -25,6 +25,7 @@ export default function AlbumList() {
 	const albums = useSelector(showAlbums);
 	const searchAlbum = useSelector(showAlbumSearch);
 
+	//Here are all my action calls to the redux store for the CRUD mutations and the search bar
 	const handleDelete = (id) => {
 		dispatch(deleteAsyncAlbum({ id }));
 	};
@@ -57,6 +58,7 @@ export default function AlbumList() {
 
 	return (
 		<div className="p-8">
+			{/* The search bar sticks to the top of the page and has the required fields */}
 			<form className="sticky top-36 flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
 				<label className="flex flex-row gap-3  text-white font-bold mr-3">
 					<div className="text-4xl mt-2">Search:</div>
@@ -79,7 +81,7 @@ export default function AlbumList() {
 				</label>
 				<AlbumModal />
 			</form>
-
+			{/* Hide the search results when there hasn't been a search performed */}
 			{showSearch && (
 				<div className="flex flex-wrap rounded-xl gap-6 mb-40 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{
@@ -129,6 +131,7 @@ export default function AlbumList() {
 				</div>
 			)}
 
+			{/* This shows the  albums on load and hides them when a search is performed*/}
 			{showAll && (
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{albums.map((album, i) => (
@@ -167,6 +170,7 @@ export default function AlbumList() {
 				</div>
 			)}
 
+			{/* This if the Headless UI modal code */}
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
 					as="div"

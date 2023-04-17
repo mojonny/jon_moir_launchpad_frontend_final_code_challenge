@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
+//This defined the toast popup when a mutation or query is performed
 const Toast = Swal.mixin({
 	toast: true,
 	position: 'top-end',
@@ -14,13 +15,13 @@ const Toast = Swal.mixin({
 	},
 });
 
+//These are my async api calls using axios
 export const getAsyncAlbums = createAsyncThunk('getAsyncAlbums', async () => {
 	try {
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/albums?_limit=20'
 		);
 		const albums = await response.data;
-		console.log('getAsyncAlbums:', response.data);
 		return albums;
 	} catch (err) {
 		console.log('err', err);
@@ -34,7 +35,7 @@ export const addAsyncAlbums = (data) => async (dispatch) => {
 			'https://jsonplaceholder.typicode.com/albums?_limit=20',
 			data
 		);
-		console.log('addAsyncAlbums:', response.data);
+
 		Toast.fire({
 			icon: 'success',
 			title: `Album added successfully!
@@ -50,6 +51,7 @@ export const addAsyncAlbums = (data) => async (dispatch) => {
 export const updateAsyncAlbum =
 	({ id, userId, title }) =>
 	async (dispatch) => {
+		// Since the results only have Ids up to 100
 		if (id <= 100) {
 			try {
 				const response = await axios.put(
