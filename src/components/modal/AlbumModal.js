@@ -33,7 +33,7 @@ export default function AlbumModal() {
 			<button
 				type="button"
 				onClick={openModal}
-				className="inline-flex justify-center px-4 py-3 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+				className="py-4 px-4 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 			>
 				ADD
 			</button>

@@ -17,8 +17,9 @@ export default function PhotoList() {
 	const photos = useSelector(showPhotos);
 	const searchPhotos = useSelector(showPhotosSearch);
 
-	const handleSearch = () => {
+	const handleSearch = (e) => {
 		dispatch(searchAsyncPhotos({ albumId }));
+		e.preventDefault();
 		setShowSearch(true);
 		setShowAll(false);
 		setAlbumId('');
@@ -33,31 +34,33 @@ export default function PhotoList() {
 
 	return (
 		<div className="p-8">
-			<div className="flex flex-row mx-auto gap-4 bg-midnight rounded-xl shadow-md shadow-purple p-2">
-				<label className="text-xl text-white font-bold p-2">Search:</label>
-				<input
-					type="text"
-					placeholder="Album Id"
-					value={albumId}
-					onChange={(e) => setAlbumId(e.target.value)}
-					className="border-2 rounded-lg p-2 border-purple bg-transparent text-white"
-				/>
-
+			<form className="flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
+				<label className="flex flex-row gap-3  text-white font-bold mr-3">
+					<div className="text-4xl mt-2">Search:</div>
+					<input
+						required
+						type="text"
+						placeholder="Album Id"
+						value={albumId}
+						onChange={(e) => setAlbumId(e.target.value)}
+						className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-60"
+					/>
+					<button
+						type="submit"
+						className="px-4 py-4 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+						onClick={handleSearch}
+						disabled={!albumId}
+					>
+						<img src={searchButton} alt="looking glass" />
+					</button>
+				</label>
 				<button
-					className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
-					onClick={handleSearch}
-					disabled={!albumId}
-				>
-					<img src={searchButton} alt="looking glass" />
-				</button>
-
-				<button
-					className="inline-flex justify-center px-4 py-3 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+					className="px-4 text-md text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300 font-bold"
 					onClick={handleReset}
 				>
 					RESET
 				</button>
-			</div>
+			</form>
 
 			{showSearch && (
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
