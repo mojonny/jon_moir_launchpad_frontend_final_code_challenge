@@ -15,7 +15,7 @@ export default function MainLayout() {
 					<img className=" -mb-48 -mt-52 -ml-80" src={spaceType} alt="space" />
 				</div>
 				<div className="flex flex-col gap-4">
-					<a href="https://github.com/mojonny">
+					<a href="https://github.com/mojonny/jon_moir_launchpad_frontend_final_code_challenge">
 						<img className="mt-10 h-10 w-10" src={Github} alt="github" />
 					</a>
 					<a href="https://www.jonnymoir.com">
