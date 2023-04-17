@@ -15,15 +15,23 @@ export default function MainLayout() {
 				<div className="overflow-hidden">
 					<img className=" -mb-48 -mt-52 -ml-80" src={spaceType} alt="space" />
 				</div>
-				<div className="flex flex-col gap-4">
+				<div className="flex flex-col gap-4 pr-20">
 					<a href="https://github.com/mojonny/jon_moir_launchpad_frontend_final_code_challenge">
-						<img className="mt-10 h-10 w-10" src={Github} alt="github" />
+						<img
+							className="mt-10 h-10 w-10 object-contain"
+							src={Github}
+							alt="github"
+						/>
 					</a>
 					<a href="https://www.jonnymoir.com">
-						<img className="h-10 w-10" src={Web} alt="website" />
+						<img className="h-10 w-10 object-contain" src={Web} alt="website" />
 					</a>
 					<a href="https://www.linkedin.com/in/jonathanmoir/">
-						<img className="h-10 w-10" src={Linkedin} alt="linkedin" />
+						<img
+							className="h-10 w-10 object-contain"
+							src={Linkedin}
+							alt="linkedin"
+						/>
 					</a>
 				</div>
 			</header>
