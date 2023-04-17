@@ -1,0 +1,41 @@
+.welcome-layout {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #cb80ff;
+	height: 110vh;
+	width: 110vw;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	margin: auto;
+	padding: 0;
+}
+
+.animation {
+	height: 800px;
+	width: 800px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.fadeout {
+	opacity: 0;
+	-webkit-animation: fadeout 2s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadeout 2s; /* Firefox < 16 */
+	-ms-animation: fadeout 2s; /* Internet Explorer */
+	-o-animation: fadeout 2s; /* Opera < 12.1 */
+	animation: fadeout 2s;
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

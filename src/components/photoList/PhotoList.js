@@ -34,33 +34,35 @@ export default function PhotoList() {
 
 	return (
 		<div className="p-8">
-			<form className="flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
-				<label className="flex flex-row gap-3  text-white font-bold mr-3">
-					<div className="text-4xl mt-2">Search:</div>
-					<input
-						required
-						type="text"
-						placeholder="Album Id"
-						value={albumId}
-						onChange={(e) => setAlbumId(e.target.value)}
-						className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-60"
-					/>
-					<button
-						type="submit"
-						className="px-4 py-4 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
-						onClick={handleSearch}
-						disabled={!albumId}
-					>
-						<img src={searchButton} alt="looking glass" />
-					</button>
-				</label>
+			<div className="sticky top-36 flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
+				<form>
+					<label className="flex flex-row gap-3  text-white font-bold mr-3">
+						<div className="text-4xl mt-2">Search:</div>
+						<input
+							required
+							type="text"
+							placeholder="Album Id"
+							value={albumId}
+							onChange={(e) => setAlbumId(e.target.value)}
+							className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-60"
+						/>
+						<button
+							type="submit"
+							className="px-4 py-4 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+							onClick={handleSearch}
+							disabled={!albumId}
+						>
+							<img src={searchButton} alt="looking glass" />
+						</button>
+					</label>
+				</form>
 				<button
 					className="px-4 text-md text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300 font-bold"
 					onClick={handleReset}
 				>
 					RESET
 				</button>
-			</form>
+			</div>
 
 			{showSearch && (
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">

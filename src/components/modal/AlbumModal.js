@@ -38,6 +38,14 @@ export default function AlbumModal() {
 				ADD
 			</button>
 
+			<button
+				type="button"
+				onClick={() => window.location.reload()}
+				className="py-4 px-4 mx-4 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+			>
+				RESET
+			</button>
+
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
 					as="div"
@@ -73,14 +81,14 @@ export default function AlbumModal() {
 							leaveFrom="opacity-100 scale-100"
 							leaveTo="opacity-0 scale-95"
 						>
-							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-midnight shadow-xl shadow-purple rounded-lg">
+							<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-darkPurple shadow-lg shadow-purple rounded-lg">
 								<Dialog.Title
 									as="h3"
 									className="text-2xl font-medium leading-6 text-white"
 								>
 									ADD ALBUM
 								</Dialog.Title>
-								<div className="mt-2 p-8 bg-darkPurple border-2 rounded-lg border-lightPurple text-white">
+								<div className="mt-2 p-8 bg-midnight border-2 rounded-lg border-lightPurple text-white font-bold">
 									<label>UserId: </label>
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
@@ -95,7 +103,7 @@ export default function AlbumModal() {
 									<br />
 									<label>Title: </label>
 									<input
-										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
+										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent "
 										type="text"
 										placeholder=" title"
 										id="titleInput"
@@ -112,6 +120,7 @@ export default function AlbumModal() {
 										type="button"
 										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 										onClick={addNewAlbum}
+										disabled={!newAlbum.title || !newAlbum.userId}
 									>
 										Add Album
 									</button>

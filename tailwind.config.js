@@ -8,9 +8,14 @@ module.exports = {
 			purple: '#8956f1',
 			darkPurple: '#241b35',
 			midnight: '#020102',
-			white: '#acacac',
+			white: '#ced9bf',
 		},
-		extend: {},
+
+		extend: {
+			fontFamily: {
+				display: ['Open Sans', 'sans-serif'],
+			},
+		},
 	},
 	plugins: [],
 };

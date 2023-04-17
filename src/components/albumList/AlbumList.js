@@ -57,7 +57,7 @@ export default function AlbumList() {
 
 	return (
 		<div className="p-8">
-			<form className="flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
+			<form className="sticky top-36 flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
 				<label className="flex flex-row gap-3  text-white font-bold mr-3">
 					<div className="text-4xl mt-2">Search:</div>
 					<input
@@ -81,10 +81,10 @@ export default function AlbumList() {
 			</form>
 
 			{showSearch && (
-				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-purple shadow-2xl">
+				<div className="flex flex-wrap rounded-xl gap-6 mb-40 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{
 						<div
-							className=" bg-darkPurple rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-2xl"
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
 							key={searchAlbum.id}
 						>
 							<div className="flex flex-row gap-4 p-4 justify-end">
@@ -113,7 +113,7 @@ export default function AlbumList() {
 								</button>
 							</div>
 
-							<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
+							<div className="flex flex-row -mt-14 p-4 gap-2 place-items-baseline">
 								<div className="text-8xl">{searchAlbum.id} </div>
 								<div className="text-white text-xs">ID</div>
 								<div className="text-4xl">{searchAlbum.userId} </div>
