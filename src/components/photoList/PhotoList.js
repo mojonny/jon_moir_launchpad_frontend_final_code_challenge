@@ -36,8 +36,8 @@ export default function PhotoList() {
 		<div className="p-2">
 			<div className="sticky top-20 flex flex-col md:flex-row md:place-content-end gap-4 place-items-center bg-midnight rounded-xl shadow-md shadow-purple p-4">
 				<form>
-					<label className="flex flex-row md:justify-end gap-3 place-items-center text-white font-bold">
-						<div className="text-xs sm:text-xl">Search:</div>
+					<label className="flex flex-row md:justify-end gap-3 place-items-center text-white">
+						<div className="text-xs sm:text-xl font-bold">Photos search:</div>
 						<input
 							required
 							type="text"

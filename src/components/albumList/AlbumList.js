@@ -60,8 +60,8 @@ export default function AlbumList() {
 		<div className="p-2">
 			{/* The search bar sticks to the top of the page and has the required fields */}
 			<form className="sticky top-20 flex flex-col md:flex-row md:place-content-end gap-4 place-items-center bg-midnight rounded-xl shadow-md shadow-purple p-4">
-				<label className="flex flex-row md:justify-end gap-3 place-items-center text-white font-bold">
-					<div className="text-xs sm:text-xl">Search:</div>
+				<label className="flex flex-row md:justify-end gap-3 place-items-center text-white ">
+					<div className="text-xs sm:text-xl font-bold">Albums search:</div>
 					<input
 						required
 						type="text"
