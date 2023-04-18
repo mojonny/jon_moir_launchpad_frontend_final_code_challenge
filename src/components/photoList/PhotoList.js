@@ -74,7 +74,7 @@ export default function PhotoList() {
 							key={i}
 							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-64 shadow-purple shadow-lg"
 						>
-							<div className="flex flex-col xl:flex xl:flex-row p-4 gap-2 place-items-baseline">
+							<div className="flex flex-col p-4 gap-2 place-items-baseline">
 								<div className="text-4xl md:text-8xl">{photo.albumId}</div>
 								<div className="text-white text-xs">albumID</div>
 								<div className="text-2xl md:text-4xl">{photo.id}</div>
