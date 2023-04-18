@@ -9,7 +9,6 @@ export const getAsyncPhotos = createAsyncThunk('getAsyncPhotos', async () => {
 			'https://jsonplaceholder.typicode.com/photos?_limit=20'
 		);
 		const photos = await response.data;
-		console.log('getAsyncPhotos:', response.data);
 		return photos;
 	} catch (err) {
 		console.log('err', err);

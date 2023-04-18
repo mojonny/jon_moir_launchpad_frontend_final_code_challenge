@@ -5,7 +5,6 @@ import {
 	searchAsyncPhotos,
 	showPhotosSearch,
 } from '../../features/photos/searchPhotosSlice';
-import { getAsyncPhotos } from '../../features/photos/photosSlice';
 import searchButton from '../../assets/LookingGlass.png';
 
 export default function PhotoList() {
@@ -26,10 +25,11 @@ export default function PhotoList() {
 	};
 
 	const handleReset = () => {
-		dispatch(getAsyncPhotos());
-		setShowSearch(false);
-		setShowAll(true);
-		setAlbumId('');
+		if (showSearch === true) {
+			setShowSearch(false);
+			setShowAll(true);
+			setAlbumId('');
+		}
 	};
 
 	return (
@@ -58,8 +58,8 @@ export default function PhotoList() {
 				</form>
 				<button
 					className="px-8 py-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
-					onClick={() =>
-						handleReset() || window.scrollTo({ top: 0, behavior: 'smooth' })
+					onClick={
+						handleReset || window.scrollTo({ top: 0, behavior: 'smooth' })
 					}
 				>
 					RESET
