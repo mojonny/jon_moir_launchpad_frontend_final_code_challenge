@@ -57,22 +57,22 @@ export default function AlbumList() {
 	}
 
 	return (
-		<div className="p-8">
+		<div className="p-2">
 			{/* The search bar sticks to the top of the page and has the required fields */}
-			<form className="sticky top-36 flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
-				<label className="flex flex-row gap-3  text-white font-bold mr-3">
-					<div className="text-4xl mt-2">Search:</div>
+			<form className="sticky top-20 flex flex-col md:flex-row md:place-content-end gap-4 place-items-center bg-midnight rounded-xl shadow-md shadow-purple p-4">
+				<label className="flex flex-row md:justify-end gap-3 place-items-center text-white font-bold">
+					<div className="text-xs sm:text-xl">Search:</div>
 					<input
 						required
 						type="text"
-						placeholder=" id "
+						placeholder="Insert id "
 						value={id}
 						onChange={(e) => setId(e.target.value)}
-						className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-60"
+						className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-1/2 text-xs sm:text-xl"
 					/>
 					<button
 						type="submit"
-						className="px-4 py-4 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+						className="p-2 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 						onClick={handleSearch}
 						disabled={!id}
 					>
@@ -83,15 +83,15 @@ export default function AlbumList() {
 			</form>
 			{/* Hide the search results when there hasn't been a search performed */}
 			{showSearch && (
-				<div className="flex flex-wrap rounded-xl gap-6 mb-40 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
+				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{
 						<div
-							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-64 shadow-purple shadow-lg"
 							key={searchAlbum.id}
 						>
-							<div className="flex flex-row gap-4 p-4 justify-end">
+							<div className="flex flex-row justify-end gap-4 p-4">
 								<button
-									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 									onClick={() =>
 										handleEditMode(
 											searchAlbum.id,
@@ -104,7 +104,7 @@ export default function AlbumList() {
 								</button>
 
 								<button
-									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 									onClick={() =>
 										handleDelete(searchAlbum.id) ||
 										setShowSearch(false) ||
@@ -115,7 +115,7 @@ export default function AlbumList() {
 								</button>
 							</div>
 
-							<div className="flex flex-row -mt-14 p-4 gap-2 place-items-baseline">
+							<div className="flex flex-col sm:flex sm:flex-row p-4 gap-2 place-items-baseline">
 								<div className="text-8xl">{searchAlbum.id} </div>
 								<div className="text-white text-xs">ID</div>
 								<div className="text-4xl">{searchAlbum.userId} </div>
@@ -136,12 +136,12 @@ export default function AlbumList() {
 				<div className="flex flex-wrap rounded-xl gap-6 m-8 p-4 bg-darkPurple shadow-purple shadow-xl">
 					{albums.map((album, i) => (
 						<div
-							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-64 shadow-purple shadow-lg"
 							key={i}
 						>
-							<div className="flex flex-row gap-4 p-4 justify-end">
+							<div className="flex flex-row justify-end gap-4 p-4">
 								<button
-									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 									onClick={() =>
 										handleEditMode(album.id, album.userId, album.title)
 									}
@@ -150,13 +150,13 @@ export default function AlbumList() {
 								</button>
 
 								<button
-									className="text-sm font-medium text-white rounded-md hover:bg-opacity-50 duration-300 shadow-xl bg-midnight py-2 px-4 border-2 border-lightPurple"
+									className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 									onClick={() => handleDelete(album.id)}
 								>
 									DEL
 								</button>
 							</div>
-							<div className="flex flex-row -mt-14 p-4 gap-2 place-items-baseline">
+							<div className="flex flex-col sm:flex sm:flex-row p-4 gap-2 place-items-baseline">
 								<div className="text-8xl">{album.id}</div>
 								<div className="text-white text-xs">ID</div>
 								<div className="text-4xl">{album.userId}</div>

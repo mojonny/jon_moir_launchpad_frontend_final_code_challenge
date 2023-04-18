@@ -33,22 +33,22 @@ export default function PhotoList() {
 	};
 
 	return (
-		<div className="p-8">
-			<div className="sticky top-36 flex flex-row justify-items-center justify-center bg-midnight rounded-xl shadow-md shadow-purple p-8">
+		<div className="p-2">
+			<div className="sticky top-20 flex flex-col md:flex-row md:place-content-end gap-4 place-items-center bg-midnight rounded-xl shadow-md shadow-purple p-4">
 				<form>
-					<label className="flex flex-row gap-3  text-white font-bold mr-3">
-						<div className="text-4xl mt-2">Search:</div>
+					<label className="flex flex-row md:justify-end gap-3 place-items-center text-white font-bold">
+						<div className="text-xs sm:text-xl">Search:</div>
 						<input
 							required
 							type="text"
-							placeholder="Album Id"
+							placeholder="Insert album Id"
 							value={albumId}
 							onChange={(e) => setAlbumId(e.target.value)}
-							className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-60"
+							className="border-2 rounded-lg p-2 border-purple bg-transparent text-white w-1/2 text-xs sm:text-xl"
 						/>
 						<button
 							type="submit"
-							className="px-4 py-4 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+							className="p-2 bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
 							onClick={handleSearch}
 							disabled={!albumId}
 						>
@@ -57,8 +57,10 @@ export default function PhotoList() {
 					</label>
 				</form>
 				<button
-					className="px-4 text-md text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300 font-bold"
-					onClick={handleReset}
+					className="px-8 py-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+					onClick={() =>
+						handleReset() || window.scrollTo({ top: 0, behavior: 'smooth' })
+					}
 				>
 					RESET
 				</button>
@@ -70,12 +72,12 @@ export default function PhotoList() {
 					{searchPhotos.map((photo, i) => (
 						<div
 							key={i}
-							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-64 shadow-purple shadow-lg"
 						>
-							<div className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline">
-								<div className="text-8xl">{photo.albumId}</div>
+							<div className="flex flex-col xl:flex xl:flex-row p-4 gap-2 place-items-baseline">
+								<div className="text-4xl md:text-8xl">{photo.albumId}</div>
 								<div className="text-white text-xs">albumID</div>
-								<div className="text-4xl">{photo.id}</div>
+								<div className="text-2xl md:text-4xl">{photo.id}</div>
 								<div className="text-white text-xs">ID</div>
 							</div>
 
@@ -102,12 +104,9 @@ export default function PhotoList() {
 					{photos.map((photo, i) => (
 						<div
 							key={i}
-							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-1/4 shadow-purple shadow-lg"
+							className=" bg-midnight rounded-xl gap-6 m-8 p-4 text-purple w-64 shadow-purple shadow-lg"
 						>
-							<div
-								div
-								className="flex flex-row -mt-16 p-4 gap-2 place-items-baseline"
-							>
+							<div className="flex flex-col md:flex md:flex-row p-4 gap-2 place-items-baseline">
 								<div className="text-8xl">{photo.albumId}</div>
 								<div className="text-white text-xs">albumID</div>
 								<div className="text-4xl">{photo.id}</div>

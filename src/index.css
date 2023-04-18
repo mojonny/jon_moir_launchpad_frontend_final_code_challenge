@@ -18,5 +18,5 @@ code {
 @tailwind utilities;
 
 h1 {
-	font-family: 'palatino', serif;
+	font-family: 'Courier New', monospace;
 }

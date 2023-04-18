@@ -30,21 +30,26 @@ export default function AlbumModal() {
 
 	return (
 		<div>
-			<button
-				type="button"
-				onClick={openModal}
-				className="py-4 px-4 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
-			>
-				ADD
-			</button>
+			<div className="flex flex-row gap-4 place-items-end">
+				<button
+					type="button"
+					onClick={openModal}
+					className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+				>
+					ADD
+				</button>
 
-			<button
-				type="button"
-				onClick={() => window.location.reload()}
-				className="py-4 px-4 mx-4 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
-			>
-				RESET
-			</button>
+				<button
+					type="button"
+					onClick={() =>
+						window.location.reload() ||
+						window.scrollTo({ top: 0, behavior: 'smooth' })
+					}
+					className="p-2 text-md font-bold text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+				>
+					RESET
+				</button>
+			</div>
 
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
@@ -88,12 +93,12 @@ export default function AlbumModal() {
 								>
 									ADD ALBUM
 								</Dialog.Title>
-								<div className="mt-2 p-8 bg-midnight border-2 rounded-lg border-lightPurple text-white font-bold">
+								<div className="mt-2 p-8 bg-midnight border-2 rounded-lg border-lightPurple text-white">
 									<label>UserId: </label>
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent"
 										type="text"
-										placeholder=" userId"
+										placeholder=" insert userId"
 										id="titleInput"
 										onChange={(e) =>
 											setNewAlbum({ ...newAlbum, userId: e.target.value })
@@ -105,7 +110,7 @@ export default function AlbumModal() {
 									<input
 										className="border-2 rounded-lg m-4 p-2 w-full border-lightPurple bg-transparent "
 										type="text"
-										placeholder=" title"
+										placeholder=" insert title"
 										id="titleInput"
 										onChange={(e) =>
 											setNewAlbum({ ...newAlbum, title: e.target.value })
@@ -118,19 +123,19 @@ export default function AlbumModal() {
 								<div className="flex flex-row gap-4 mt-2">
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300 font-bold"
 										onClick={addNewAlbum}
 										disabled={!newAlbum.title || !newAlbum.userId}
 									>
-										Add Album
+										ADD
 									</button>
 
 									<button
 										type="button"
-										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300"
+										className="inline-flex justify-center px-4 py-2 text-sm text-white bg-darkPurple rounded-md hover:bg-purple border-purple border-2 duration-300 font-bold"
 										onClick={closeModal}
 									>
-										Close
+										EXIT
 									</button>
 								</div>
 							</div>
